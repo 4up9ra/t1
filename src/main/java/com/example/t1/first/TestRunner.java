@@ -27,9 +27,9 @@ public class TestRunner {
     }
 
     private static void invokeMethods(Object object, Map<Integer, List<Method>> instanceMethods, Map<String, Method> staticMethods) throws Exception {
-        invokeBeforeMethod(BeforeSuite.class.getSimpleName(), object, staticMethods);
+        invokeStaticMethod(BeforeSuite.class.getSimpleName(), object, staticMethods);
         invokeCommonMethods(object, instanceMethods);
-        invokeAfterMethod(AfterSuite.class.getSimpleName(), object, staticMethods);
+        invokeStaticMethod(AfterSuite.class.getSimpleName(), object, staticMethods);
     }
 
     private static void invokeCommonMethods(Object object, Map<Integer, List<Method>> instanceMethods) throws Exception {
@@ -41,17 +41,10 @@ public class TestRunner {
         }
     }
 
-    private static void invokeAfterMethod(String simpleName, Object object, Map<String, Method> staticMethods) throws Exception {
-        Method afterMethod = staticMethods.get(AfterSuite.class.getSimpleName());
-        if (afterMethod != null) {
-            afterMethod.invoke(object);
-        }
-    }
-
-    private static void invokeBeforeMethod(String simpleName, Object object, Map<String, Method> staticMethods) throws Exception {
-        Method beforeMethod = staticMethods.get(BeforeSuite.class.getSimpleName());
-        if (beforeMethod != null) {
-            beforeMethod.invoke(object);
+    private static void invokeStaticMethod(String simpleName, Object object, Map<String, Method> staticMethods) throws Exception {
+        Method method = staticMethods.get(simpleName);
+        if (method != null) {
+            method.invoke(object);
         }
     }
 
