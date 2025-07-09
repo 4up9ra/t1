@@ -6,16 +6,14 @@ import java.util.List;
 
 public class MyThreadPool {
 
-    private final List<MyThread> myThreads;
-    private final LinkedList<Runnable> taskQueue;
+    private final List<MyThread> myThreads = new ArrayList<>();
+    private final LinkedList<Runnable> taskQueue = new LinkedList<>();
     private volatile boolean isShutdown;
 
     public MyThreadPool(int poolSize) {
         if (poolSize <= 0) {
             throw new IllegalArgumentException("Pool size must be > 0");
         }
-        this.myThreads = new ArrayList<>();
-        this.taskQueue = new LinkedList<>();
 
         for (int i = 0; i < poolSize; i++) {
             MyThread myThread = new MyThread();
