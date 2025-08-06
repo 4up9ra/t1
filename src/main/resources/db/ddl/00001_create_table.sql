@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS users
-(
-    id BIGSERIAL,
-    username VARCHAR UNIQUE NOT NULL
-);

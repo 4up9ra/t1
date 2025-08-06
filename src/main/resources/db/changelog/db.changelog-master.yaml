@@ -1,8 +1,0 @@
-databaseChangeLog:
-  - changeSet:
-      id: 1
-      author: kirill
-  - include:
-      file: db/ddl/00001_create_table.sql
-  - include:
-      file: db/ddl/00002_insert_into_table.sql
