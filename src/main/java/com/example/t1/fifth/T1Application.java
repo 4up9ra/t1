@@ -14,5 +14,6 @@ public class T1Application {
 
         CommandLineRunner commandLineRunner = context.getBean(CommandLineRunner.class);
         commandLineRunner.runAllOperations();
+
     }
 }
