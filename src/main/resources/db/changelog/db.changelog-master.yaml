@@ -6,3 +6,7 @@ databaseChangeLog:
       file: db/ddl/00001_create_table.sql
   - include:
       file: db/ddl/00002_insert_into_table.sql
+  - include:
+      file: db/ddl/00003_create_table_products.sql
+  - include:
+      file: db/ddl/00004_insert_into_table_products.sql

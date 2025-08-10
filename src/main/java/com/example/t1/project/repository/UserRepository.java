@@ -1,6 +1,6 @@
-package com.example.t1.fifth.repository;
+package com.example.t1.project.repository;
 
-import com.example.t1.fifth.entity.User;
+import com.example.t1.project.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
