@@ -1,12 +1,14 @@
-package com.example.t1.fifth.entity;
+package com.example.t1.project.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,9 +21,8 @@ public class User {
     private Long id;
     @Column(name = "username")
     private String username;
-
-    public User() {
-    }
+    @OneToMany(mappedBy = "user")
+    private List<Product> products;
 
     public Long getId() {
         return id;
@@ -39,17 +40,25 @@ public class User {
         this.username = username;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username);
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(products, user.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username);
+        return Objects.hash(id, username, products);
     }
 
     @Override
@@ -57,6 +66,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", products=" + products +
                 '}';
     }
 }
