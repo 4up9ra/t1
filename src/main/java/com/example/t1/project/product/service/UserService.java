@@ -1,7 +1,7 @@
-package com.example.t1.project.service;
+package com.example.t1.project.product.service;
 
-import com.example.t1.project.repository.UserRepository;
-import com.example.t1.project.entity.User;
+import com.example.t1.project.product.repository.UserRepository;
+import com.example.t1.project.product.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

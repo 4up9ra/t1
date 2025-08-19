@@ -1,13 +1,14 @@
-package com.example.t1.project.service;
+package com.example.t1.project.product.service;
 
-import com.example.t1.project.dto.ProductResponseDto;
-import com.example.t1.project.entity.Product;
-import com.example.t1.project.exception.ProductNotFoundException;
-import com.example.t1.project.mapper.EntityToDtoMapper;
-import com.example.t1.project.repository.ProductRepository;
+import com.example.t1.project.product.dto.ProductResponseDto;
+import com.example.t1.project.product.entity.Product;
+import com.example.t1.project.product.exception.ProductNotFoundException;
+import com.example.t1.project.product.mapper.EntityToDtoMapper;
+import com.example.t1.project.product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -34,8 +35,13 @@ public class ProductService {
     }
 
     public ProductResponseDto findByProductId(Long productId) {
-       return productRepository.findById(productId)
+        return productRepository.findById(productId)
                .map(entityToDtoMapper::mapToDto)
                .orElseThrow(() -> new ProductNotFoundException("Product with id = '" + productId + "' not found"));
+    }
+
+    @Transactional
+    public ProductResponseDto payByProductId(Long productId, BigDecimal amount) {
+        return productRepository.updateBalanceById(productId, amount);
     }
 }

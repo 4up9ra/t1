@@ -1,7 +1,7 @@
-package com.example.t1.project;
+package com.example.t1.project.product;
 
-import com.example.t1.project.entity.User;
-import com.example.t1.project.service.UserService;
+import com.example.t1.project.product.entity.User;
+import com.example.t1.project.product.service.UserService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

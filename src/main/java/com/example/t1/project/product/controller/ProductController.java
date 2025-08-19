@@ -1,13 +1,15 @@
-package com.example.t1.project.controller;
+package com.example.t1.project.product.controller;
 
-import com.example.t1.project.dto.ProductResponseDto;
-import com.example.t1.project.service.ProductService;
+import com.example.t1.project.product.dto.ProductResponseDto;
+import com.example.t1.project.product.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -28,5 +30,11 @@ public class ProductController {
     @GetMapping("/getByProductId")
     public ResponseEntity<ProductResponseDto> getByProductId(@RequestParam Long productId) {
         return ResponseEntity.ok().body(productService.findByProductId(productId));
+    }
+
+    @PostMapping("/payByProductId")
+    public ResponseEntity<ProductResponseDto> payByProductId(@RequestParam Long productId,
+                                                             @RequestParam BigDecimal amount) {
+        return ResponseEntity.ok().body(productService.payByProductId(productId, amount));
     }
 }
