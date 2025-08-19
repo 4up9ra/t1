@@ -1,4 +1,4 @@
-package com.example.t1.project.dto;
+package com.example.t1.project.product.dto;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -9,6 +9,16 @@ public class ProductResponseDto {
     private Long accountNumber;
     private BigDecimal balance;
     private Long userId;
+
+    public ProductResponseDto() {
+    }
+
+    public ProductResponseDto(Long id, Long accountNumber, BigDecimal balance, Long userId) {
+        this.id = id;
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.userId = userId;
+    }
 
     public Long getId() {
         return id;
